@@ -1,0 +1,11 @@
+<h1>List of all messages</h1>
+
+<ul>
+  <% @messages.each do |message| %>
+    <li>
+      <%= message.content %>
+      <%= link_to 'Show', message %>
+      <%= link_to 'Delete', message, method: :delete %>
+    </li>
+  <% end %>
+<ul>
