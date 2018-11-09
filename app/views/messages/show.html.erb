@@ -1,3 +1,10 @@
 <h1><%= @message.content %></h1>
-<h5><%= @message.author %></h5>
+<h5><%= @message.user.email %></h5>
+
+<h3>Add comment</h3>
+<%= render partial: 'comments/form', locals: { comment: Comment.new, message: @message } %>
+
+<h3>Comments</h3>
+<%= render partial: 'comments', collection: @message.comments, as: :comment %>
+
 <%= link_to 'Back to all messages', messages_path %>
