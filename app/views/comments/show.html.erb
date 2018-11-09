@@ -1,0 +1,4 @@
+<h1><%= @comment.content %></h1>
+<h5><%= @comment.author %></h5>
+
+<%= link_to 'Back to message', message_path(@comment.message_id) %>

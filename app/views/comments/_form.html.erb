@@ -1,0 +1,26 @@
+<% if comment.errors.any? %>
+  <div id="error_explanation">
+    <ul>
+      <% comment.errors.full_messages.each do |error_msg| %>
+        <li><%= error_msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= form_for(comment) do |form| %>
+  <%= form.hidden_field :message_id, value: message.id %>
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_field :content %>
+  </div>
+
+  <div class="field">
+    <%= form.label :author %>
+    <%= form.text_field :author %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Submit" %>
+  </div>
+<% end %>
