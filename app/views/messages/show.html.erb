@@ -5,6 +5,6 @@
 <%= render partial: 'comments/form', locals: { comment: Comment.new, message: @message } %>
 
 <h3>Comments</h3>
-<%= render partial: 'comments', collection: @message.comments, as: :comment %>
+<%= render partial: '/messages/comments', collection: @message.comments, as: :comment %>
 
 <%= link_to 'Back to all messages', messages_path %>
