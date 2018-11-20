@@ -8,9 +8,11 @@ class CommentsController < ApplicationController
   def create
     @comment = Comment.new(comment_params)
     if @comment.save
+      flash[:notice] = "Udało się!"
       redirect_to @comment.message
     else
       @message = Message.find(comment_params[:message_id])
+      flash[:alert] = "Nie udało się!"
       render 'messages/show'
     end
   end
