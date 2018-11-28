@@ -79,11 +79,11 @@ class SearchCars
 
   private
 
-  def brand_filter
+  def filter_by_brand
     @cars = @cars.where(brand: @filters[:brand])
   end
 
-  def calculate_price
+  def filter_by_color
     @cars = @cars.where(color: @filters[:color])
   end
 end
@@ -210,7 +210,7 @@ RSpec.describe OrderCar do
   describe '#call' do
 
     it 'should create OrderCar object' do
-      expect{command.call}.to change{Order.count}.by(1)
+      expect{command.call}.to change{CarOrder.count}.by(1)
     end
 
     it 'should assign correct fields to CarOrder' do
