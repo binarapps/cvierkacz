@@ -13,3 +13,15 @@
  *= require_tree .
  *= require_self
  */
+
+ .main {
+   margin: 20px 40px;
+ }
+
+ .pagination {
+   margin-top: 10px;
+ }
+
+ .pagination > span {
+   padding: 0 5px;
+ }
