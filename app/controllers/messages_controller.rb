@@ -2,7 +2,7 @@ class MessagesController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @messages = Message.all
+    @messages = Message.all.page(params[:page])
   end
 
   def new
@@ -20,6 +20,7 @@ class MessagesController < ApplicationController
 
   def edit
     @message = Message.find(params[:id])
+    authorize(@message)
   end
 
   def update

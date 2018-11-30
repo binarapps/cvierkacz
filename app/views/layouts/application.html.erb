@@ -4,7 +4,7 @@
     <title>Cvierkacz</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-    
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
 
     <meta charset="utf-8">
@@ -18,7 +18,7 @@
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <a class="navbar-brand" href="#">
       <%= image_tag 'bootstrap-solid.svg', width: 30, height: 30 %>
-        Cvierkacz  
+        Cvierkacz
       </a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span> </button>
@@ -30,8 +30,12 @@
       <% if user_signed_in? %>
         <span>
           Logged in as
+          <% if current_user.avatar.attached? %>
+            <%= image_tag current_user.avatar.variant(resize: "50x50") %>
+          <% end %>
           <strong><%= current_user.email %></strong>.
         </span>
+        <%= link_to "Edit", edit_user_registration_path, class: 'btn ml-2' %>
         <%= link_to "Logout", destroy_user_session_path, method: :delete, class: 'btn btn-outline-warning ml-2' %>
       <% else %>
         <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-outline-success my-2 my-sm-0 mr-2' %>
@@ -40,14 +44,16 @@
       </div>
     </nav>
 
-    <% if notice %>
-      <p class="alert alert-success"><%= notice %></p>
-    <% end %>
-    <% if alert %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+    <div class="main">
+      <% if notice %>
+        <p class="alert alert-success"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="alert alert-danger"><%= alert %></p>
+      <% end %>
 
-    <%= yield %>
+      <%= yield %>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
