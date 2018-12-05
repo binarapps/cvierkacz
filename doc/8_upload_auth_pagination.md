@@ -5,7 +5,7 @@ Nie musimy nic instalować! :)
 Gem jest już zainstalowany i ma swoją konfigurację.
 
 Spójrzmy do pliku `config/storage.yml`. Mamy tam zdefiniowane różne warianty przechowywania plików w aplikacji.
-Natomiast w pliku `config/initializers/development.rb` znajdziemy informację, która opcja jest aktualnie wykorzystywana przez nasze środowisko.
+Natomiast w pliku `config/environments/development.rb` znajdziemy informację, która opcja jest aktualnie wykorzystywana przez nasze środowisko.
 
 ```ruby
 config.active_storage.service = :local
@@ -221,7 +221,7 @@ Następnie wyrenderujemy linki do kolejnych stron na liście wiadomości.
 Możliwe, że i tak nie widzimy jeszcze stronicowania, ponieważ `kaminari` stronicuje domyślnie po 25 elementów. Można to jednak zmniejszyć.
 
 ```ruby
-# app/models/Message.rb
+# app/models/message.rb
 
 paginates_per 3
 ```
