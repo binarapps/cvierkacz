@@ -7,8 +7,12 @@
       <%= message.content %>
       <%= message.user.email %>
       <%= link_to 'Show', message %>
-      <%= link_to 'Edit', edit_message_path(message.id) %>
-      <%= link_to 'Delete', message, method: :delete %>
+      <% if policy(message).edit? %>
+        <%= link_to 'Edit', edit_message_path(message.id) %>
+      <% end %>
+      <% if policy(message).destroy? %>
+        <%= link_to 'Delete', message, method: :delete %>
+      <% end %>
     </li>
   <% end %>
 </ul>

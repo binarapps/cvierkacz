@@ -1,4 +1,9 @@
 <h1><%= @message.content %></h1>
+
+<% if @message.picture.attached? %>
+  <%= image_tag @message.picture.variant(resize: "350x350") %>
+<% end %>
+
 <h5><%= @message.user.email %></h5>
 
 <h3>Add comment</h3>

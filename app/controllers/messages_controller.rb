@@ -25,6 +25,7 @@ class MessagesController < ApplicationController
 
   def update
     @message = Message.find(params[:id])
+    authorize(@message)
     if @message.update(message_params)
       redirect_to @message
     else
@@ -38,6 +39,7 @@ class MessagesController < ApplicationController
 
   def destroy
     @message = Message.find(params[:id])
+    authorize(@message)
     @message.destroy
     redirect_to messages_path
   end
@@ -45,6 +47,6 @@ class MessagesController < ApplicationController
   private
 
   def message_params
-    params.require(:message).permit(:content).merge(user_id: current_user.id)
+    params.require(:message).permit(:content, :picture).merge(user_id: current_user.id)
   end
 end

@@ -12,8 +12,8 @@ class ApplicationController < ActionController::Base
 
   private
 
-  def user_not_authorized
-    flash[:alert] = "Nie możesz edytować tej wiadomości!!!"
+  def user_not_authorized(error)
+    flash[:alert] = "Nie masz dostępu do tej akcji!!!"
     redirect_to(request.referrer || root_path)
   end
 end
